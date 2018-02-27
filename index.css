@@ -1,3 +1,23 @@
-*{
+* {
 	box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.youTubeLinks {
+	text-decoration: none;
+}
+
+.column {
+	width: 32%;
+	padding: 2%;
+	float: left;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }

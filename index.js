@@ -6,6 +6,8 @@ const FOOD_URL = "https://api.edamam.com/search";
 const foodId = "54ddc21a";
 const foodKey = "2ca1c511ec9055ec7195fb39602b989a";
 const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/search";
+// const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/explore";
+
 
 function restaurantRequest (searchTerm, city, callback) {
 	const query = {
@@ -22,14 +24,14 @@ function restaurantRequest (searchTerm, city, callback) {
 
 function callbackRestaurant (data) {
 	console.log(data);
-	const display = data.response.venues.map((item, index) => renderRestaurants(item));	
+	const display = data.response.venues.map((item, index) => renderRestaurants(item));
+	// const display = data.response.groups.map((item, index) => renderRestaurants(item));
 	console.log(display);
 	$("#restaurantResults").html(display);
 }
 
 function renderRestaurants (item) {
-	// console.log(venues.menu.url);
-	console.log(item.stats.tipCount);
+	// console.log(item.stats.tipCount);
 	const restaurantName = item.name;
 	const restaurantNumber = item.contact.formattedPhone;
 	const restaurantAddress = item.location.address;
@@ -66,20 +68,26 @@ function callbackFood (data) {
 };
 
 function renderRecipes (item) {
-	console.log(item.recipe.url);
-	console.log(item.recipe.ingredientLines);
-	console.log(item.recipe.label);
+	console.log(item.recipe.yield);
+	console.log(item.recipe.image);
+	console.log(item.recipe.calories);
+	// const pic = 'https://www.edamam.com/web-img/e67/e670c8de536f4beceedc0f4707efec50.jpg';
 	const label = item.recipe.label;
 	const ingredients = item.recipe.ingredientLines;
 	const originalRecipe = item.recipe.url;
 
 	return `<div>
 				<span>${label}</span> <a href="${originalRecipe}">Original Recipe</a>
-				<p>${ingredients[0]}</p>
-				<p>${ingredients[1] || ""}</p>
-				<p>${ingredients[2] || ""}</p>
-				<p>${ingredients[3] || ""}</p>
-				<p>${ingredients[4] || ""}</p>
+				<ul>
+					<li>${ingredients[0]}</li>
+					<li>${ingredients[1] || ""}</li>
+					<li>${ingredients[2] || ""}</li>
+					<li>${ingredients[3] || ""}</li>
+					<li>${ingredients[4] || ""}</li>
+				</ul>
+				</br>
+				</br>
+				</br>
 			</div>`
 }
 
@@ -112,7 +120,10 @@ function render (item) {
 	let title = item.snippet.title;
 	let image = item.snippet.thumbnails.medium.url;
 	return `<div>
-		<img src=${image}><a href= ${href}>${title}</a>
+		<a href= ${href} class="youTubeLinks">${title}</a><img src=${image}>
+		<br/>
+		<br/>
+		<br/>
 			</div>`;
 }
 
