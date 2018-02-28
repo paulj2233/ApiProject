@@ -4,20 +4,149 @@
 
 body {
   margin: 0;
+  /*background-color: rgba(217, 41, 39, .1);*/
+  background-color: rgba(230, 225, 98, .1);
+  font-family: 'PT Sans', sans-serif;
 }
 
-.youTubeLinks {
+
+#edamam-badge {
+	display: none;
+}
+
+
+a {
 	text-decoration: none;
 }
 
+.youTubeLinks {
+	text-align: center;
+	/*color: rgba(0, 141, 43, .9);*/
+	color: rgba(18, 124, 166, .9);
+}
+
+.youTubeContainer {
+	text-align: center;
+}
+
 .column {
-	width: 32%;
+	width: 30%;
+	margin: 1.5%;
 	padding: 2%;
 	float: left;
+
+	
 }
 
 .row:after {
     content: "";
     display: table;
     clear: both;
+}
+
+
+h1 {
+	text-align: left;
+	font-size: 3em;
+	font-family: 'Amatic SC', cursive;
+	margin-left: 2%;
+    margin-top: 1%;
+    color: rgba(159, 105, 240, .5);
+    
+}
+
+.fourInTitle {
+	
+	/*color: rgba(260, 30, 240, .5);*/
+	color: black;
+}
+
+h2 {
+	text-align: center;
+	/*color: rgba(217, 41, 39, .7);*/
+	color: rgba(240, 159, 32, .9);
+	font-size: 2em;
+	font-family: 'Raleway', sans-serif;
+}
+
+h3 {
+	text-align: center;
+	/*color: rgba(0, 141, 43, .9);*/
+	color: rgba(18, 124, 166, .9);
+	font-family: 'Raleway', sans-serif;
+
+}
+
+#restaurantResults {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.column2 {
+	/*background-color: rgba(230, 225, 98, .8);*/
+}
+
+button {
+   background: #0087cc;
+  border-radius: 4px;
+  box-shadow: 0 5px 0 #006599;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 12px 20px;
+  transition: all .1s linear;
+}
+
+button:active {
+	box-shadow: 0 2px 0 #006599;
+  transform: translateY(3px);
+}
+
+.hover{
+	transition:all .3s ease-out;
+}
+
+.hover:hover {
+	/*background-color: rgba(230, 225, 98, .3);*/
+	background-color: rgba(240, 159, 32, .3);
+	box-shadow: 0 2px 0 #006599;
+	transform:translate(0px,-10px);
+}
+
+
+.inputGroup {
+	text-align: center;
+}
+
+.form {
+	text-align: center;
+}
+
+label {
+	display: block;
+	width: 15%;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1%;
+}
+
+input {
+	width: 100%;
+	height: 4vh;
+	font-size: 1em;
+}
+
+.labelText {
+	color: black;
+	font-size: 1.0em;
+	font-family: 'Raleway', sans-serif;
+}
+
+h4 {
+	color: red;
+	font-size: 1.5em;
+	font-family: 'Raleway', sans-serif;
 }

@@ -4,15 +4,23 @@
 	<title>API Project</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="index.css">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|PT+Sans|Raleway" rel="stylesheet">
 	<script src="https://developer.edamam.com/attribution/badge.js"></script>
 </head>
 <body>
-	<form>
-		<label for="search">In the mood for</label>
-		<input type="text" name="search" id="search">
-		<label for="city">Where are you</label>
-		<input type="text" name="search" id="city">
+	<h1>food<span class="fourInTitle">4</span>mood</h1>
+	<form class="form">
+		<div class="inputGroup">
+			<h4>Find recipes and restuarants to satisfy your cravings</h4>
+		<label for="search"> 
+		<input type="text" placeholder="Enter food, e.g. tacos" name="search" id="search">
+		</label>
+		<label for="city"> 
+		<input type="text" placeholder="Enter city, e.g. Chicago,IL" name="search" id="city">
+		</label>
+		</br>
 		<button type="submit" >Click me</button>
+		</div>
 	</form>
 	
 	<div class="row">
@@ -21,7 +29,7 @@
 			<p id="youtubeResults"></p>
 		</div>
 		
-		<div class="column">
+		<div class="column column2">
 			<h2>Recipes</h2>
 			<p id="recipeResults"></p>
 		</div>

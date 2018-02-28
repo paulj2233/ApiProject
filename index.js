@@ -14,7 +14,7 @@ function restaurantRequest (searchTerm, city, callback) {
 		near: `${city}`,
 		query: `${searchTerm}`,
 		v: 20180224,
-		limit: 4,
+		limit: 8,
 		client_id: 'BXSADC2FPKWG01XQQYRXCAID0RL15OBBZUBMD0BSR1GYSD5W',
     	client_secret: 'WTO43W120JFMWPCCILGAGMMIMETRDKULGJ5ZCLADRLFQHO2X'
 	}
@@ -25,8 +25,6 @@ function restaurantRequest (searchTerm, city, callback) {
 function callbackRestaurant (data) {
 	console.log(data);
 	const display = data.response.venues.map((item, index) => renderRestaurants(item));
-	// const display = data.response.groups.map((item, index) => renderRestaurants(item));
-	console.log(display);
 	$("#restaurantResults").html(display);
 }
 
@@ -36,12 +34,21 @@ function renderRestaurants (item) {
 	const restaurantNumber = item.contact.formattedPhone;
 	const restaurantAddress = item.location.address;
 	const restaurantUrl = item.url;
-	return `<ul>
-				<li>${restaurantName || ""}</li>
-				<li>${restaurantNumber || ""}</li>
-				<li>${restaurantAddress || ""}</li>
-				<li>${restaurantUrl || ""}</li>
-			</ul>`
+	console.log(restaurantNumber);
+	console.log(restaurantAddress);
+	// if (restaurantNumber !== undefined && restaurantAddress !== undefined && restaurantUrl !== undefined) {
+		return `<div class="hover">
+					<h3>${restaurantName}</h3>
+					<ul>
+						<li>Phone: ${restaurantNumber || ""}</li>
+						<li>Address: ${restaurantAddress || ""}</li>
+						<li>Website: ${restaurantUrl || ""}</li>
+						<br/>
+						<br/>
+						<br/>
+					</ul>
+				</div>`
+	// }
 }
 
 
@@ -53,7 +60,7 @@ function recipeRequest (searchTerm, callback) {
 		q: `${searchTerm}`,
 		app_id: `${foodId}`,
 		app_key: `${foodKey}`,
-		to: 2,
+		to: 5,
 		ingr: 5
 	}
 	console.log(FOOD_URL);
@@ -76,14 +83,15 @@ function renderRecipes (item) {
 	const ingredients = item.recipe.ingredientLines;
 	const originalRecipe = item.recipe.url;
 
-	return `<div>
-				<span>${label}</span> <a href="${originalRecipe}">Original Recipe</a>
+	return `<div class="hover">
+				<h3>${label}</h3> 
 				<ul>
 					<li>${ingredients[0]}</li>
 					<li>${ingredients[1] || ""}</li>
 					<li>${ingredients[2] || ""}</li>
 					<li>${ingredients[3] || ""}</li>
 					<li>${ingredients[4] || ""}</li>
+					<li><a href="${originalRecipe}">Recipe Instructions</a></li>
 				</ul>
 				</br>
 				</br>
@@ -95,7 +103,7 @@ function youtubeRequest (searchTerm, callback) {
 	const query = {
 		part: 'snippet',
 		key: `${youtubeKey}`,
-		q: `the best recipe for ${searchTerm} in: name`
+		q: `The best recipe for ${searchTerm} in: name`
 	}
 	 console.log(YOUTUBE_URL);
 	$.getJSON(YOUTUBE_URL, query, callback)
@@ -119,11 +127,12 @@ function render (item) {
 	let href = "https://www.youtube.com/watch?v=" + item.id.videoId;
 	let title = item.snippet.title;
 	let image = item.snippet.thumbnails.medium.url;
-	return `<div>
-		<a href= ${href} class="youTubeLinks">${title}</a><img src=${image}>
-		<br/>
-		<br/>
-		<br/>
+	return `<div class="youTubeContainer hover">
+				<h3><a href= ${href} class="youTubeLinks">${title}</a></h3>
+				<img src=${image}>
+				<br/>
+				<br/>
+				<br/>
 			</div>`;
 }
 
