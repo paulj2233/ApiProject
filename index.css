@@ -5,8 +5,13 @@
 body {
   margin: 0;
   /*background-color: rgba(217, 41, 39, .1);*/
-  background-color: rgba(230, 225, 98, .1);
+ /* background-color: rgba(230, 225, 98, .1);*/
   font-family: 'PT Sans', sans-serif;
+ background-color: rgba(230, 225, 98, .3);
+background-image: radial-gradient(rgba(230, 225, 98, .3) 15%, transparent 16%),
+radial-gradient(rgba(230, 225, 98, .3) 15%, transparent 16%);
+background-size:60px 60px;
+background-position: 0 0, 30px 30px;
 }
 
 
@@ -22,7 +27,13 @@ a {
 .youTubeLinks {
 	text-align: center;
 	/*color: rgba(0, 141, 43, .9);*/
-	color: rgba(18, 124, 166, .9);
+	/*color: rgba(18, 124, 166, .9);*/
+	color: rgba(159, 105, 240, .5);
+	/*color: black;*/
+}
+
+.youTubeLinks:hover {
+	color: rgba(159, 105, 240, .9);
 }
 
 .youTubeContainer {
@@ -52,6 +63,8 @@ h1 {
 	margin-left: 2%;
     margin-top: 1%;
     color: rgba(159, 105, 240, .5);
+    display: inline-block;
+    border: 2px solid white;
     
 }
 
@@ -71,10 +84,26 @@ h2 {
 
 h3 {
 	text-align: center;
+	/*color: black;*/
+	font-weight: 900;
+	font-size: 1.3em;
+	color: rgba(159, 105, 240, .5);
 	/*color: rgba(0, 141, 43, .9);*/
-	color: rgba(18, 124, 166, .9);
+	/*color: rgba(18, 124, 166, .9);*/
 	font-family: 'Raleway', sans-serif;
+}
 
+h3:hover {
+	color: rgba(159, 105, 240, .9);
+}
+
+h4 {
+	color: black;
+	/*color: rgba(159, 105, 240, .9);*/
+	/*color: rgba(240, 159, 32, .5);*/
+	/*color: red;*/
+	font-size: 1.5em;
+	font-family: 'Raleway', sans-serif;
 }
 
 #restaurantResults {
@@ -87,21 +116,21 @@ h3 {
 }
 
 button {
-   background: #0087cc;
-  border-radius: 4px;
-  box-shadow: 0 5px 0 #006599;
-  color: #fff;
-  cursor: pointer;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 12px 20px;
-  transition: all .1s linear;
+    background-color: rgba(159, 105, 240, .5);
+    border-radius: 4px;
+    box-shadow: 0 5px 0 rgba(159, 105, 240, .9);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 12px 20px;
+    transition: all .1s linear;
 }
 
 button:active {
-	box-shadow: 0 2px 0 #006599;
-  transform: translateY(3px);
+	box-shadow: 0 2px 0 rgba(159, 105, 240, .9);
+    transform: translateY(3px);
 }
 
 .hover{
@@ -110,14 +139,17 @@ button:active {
 
 .hover:hover {
 	/*background-color: rgba(230, 225, 98, .3);*/
-	background-color: rgba(240, 159, 32, .3);
-	box-shadow: 0 2px 0 #006599;
+	/*background-color: rgba(240, 159, 32, .3);*/
+	background-color: white;
+	box-shadow: 0 2px 0 rgba(159, 105, 240, .9);
 	transform:translate(0px,-10px);
+
 }
 
 
 .inputGroup {
 	text-align: center;
+	margin-bottom: 10%;
 }
 
 .form {
@@ -137,6 +169,7 @@ input {
 	width: 100%;
 	height: 4vh;
 	font-size: 1em;
+	border: .5px solid rgba(159, 105, 240, .3);
 }
 
 .labelText {
@@ -145,8 +178,33 @@ input {
 	font-family: 'Raleway', sans-serif;
 }
 
-h4 {
-	color: red;
-	font-size: 1.5em;
-	font-family: 'Raleway', sans-serif;
+::placeholder {
+	color: lightgrey;
 }
+
+.moodInTitle {
+	color: rgba(240, 159, 32, .9);
+}
+
+img {
+	width: 100%;
+}
+
+@media only screen and (max-width: 720px) {
+	
+	.column {
+		width: 100%;
+		
+	}
+
+	img {
+		width: 50%;
+	}
+
+	.hover {
+		width: 75%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	}

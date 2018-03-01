@@ -84,14 +84,14 @@ function renderRecipes (item) {
 	const originalRecipe = item.recipe.url;
 
 	return `<div class="hover">
-				<h3>${label}</h3> 
+				<a href="${originalRecipe}"><h3>${label}</h3></a>
 				<ul>
 					<li>${ingredients[0]}</li>
 					<li>${ingredients[1] || ""}</li>
 					<li>${ingredients[2] || ""}</li>
 					<li>${ingredients[3] || ""}</li>
 					<li>${ingredients[4] || ""}</li>
-					<li><a href="${originalRecipe}">Recipe Instructions</a></li>
+					
 				</ul>
 				</br>
 				</br>
@@ -129,7 +129,7 @@ function render (item) {
 	let image = item.snippet.thumbnails.medium.url;
 	return `<div class="youTubeContainer hover">
 				<h3><a href= ${href} class="youTubeLinks">${title}</a></h3>
-				<img src=${image}>
+				<img src=${image} alt=${title}>
 				<br/>
 				<br/>
 				<br/>

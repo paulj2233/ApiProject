@@ -3,44 +3,57 @@
 <head>
 	<title>API Project</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC|PT+Sans|Raleway" rel="stylesheet">
 	<script src="https://developer.edamam.com/attribution/badge.js"></script>
 </head>
 <body>
-	<h1>food<span class="fourInTitle">4</span>mood</h1>
-	<form class="form">
-		<div class="inputGroup">
-			<h4>Find recipes and restuarants to satisfy your cravings</h4>
-		<label for="search"> 
-		<input type="text" placeholder="Enter food, e.g. tacos" name="search" id="search">
-		</label>
-		<label for="city"> 
-		<input type="text" placeholder="Enter city, e.g. Chicago,IL" name="search" id="city">
-		</label>
-		</br>
-		<button type="submit" >Click me</button>
-		</div>
-	</form>
-	
-	<div class="row">
-		<div class="column">
-			<h2>YouTube</h2>
-			<p id="youtubeResults"></p>
-		</div>
+	<header role="banner">
+		<h1>food<span class="fourInTitle">4</span><span class="moodInTitle">mood</span></h1>
+	</header>
+	<main role="main">
+		<form class="form">
+			<section class="inputGroup">
+				<header>
+					<h4>Find recipes and restaurants to satisfy your cravings</h4>
+				</header>
+				<label for="search"> Enter food:
+					<input type="text" placeholder="tacos" name="search" id="search">
+				</label>
+				<label for="city"> Enter city:
+					<input type="text" placeholder="Omaha, NE" name="search" id="city">
+				</label>
+				</br>
+				<button type="submit">Food Please!</button>
+			</section>
+		</form>
 		
-		<div class="column column2">
-			<h2>Recipes</h2>
-			<p id="recipeResults"></p>
-		</div>
-		
-		<div class="column">
-			<h2>Restaurants</h2>
-			<p id="restaurantResults"></p>
-		</div>
-		
-		<div id="edamam-badge" data-color="white"></div>
-	</div>
+		<section class="row">
+			<section class="column">
+				<header>
+					<h2>YouTube</h2>
+				</header>
+				<p id="youtubeResults"></p>
+			</section>
+			
+			<section class="column column2">
+				<header>
+					<h2>Recipes</h2>
+				</header>
+				<p id="recipeResults"></p>
+			</section>
+			
+			<section class="column">
+				<header>
+					<h2>Restaurants</h2>
+				</header>
+				<p id="restaurantResults"></p>
+			</section>
+			
+			<section id="edamam-badge" data-color="white"></section>
+		</section>
+	</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="index.js"></script>
 </body>
