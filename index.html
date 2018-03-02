@@ -12,17 +12,19 @@
 	<header role="banner">
 		<h1>food<span class="fourInTitle">4</span><span class="moodInTitle">mood</span></h1>
 	</header>
-	<main role="main">
+	<main role="main" aria-live="assertive">
 		<form class="form">
-			<section class="inputGroup">
+			<section class="inputGroup"> 
 				<header>
 					<h4>Find recipes and restaurants to satisfy your cravings</h4>
 				</header>
-				<label for="search"> Enter food:
-					<input type="text" placeholder="tacos" name="search" id="search">
+				<label for="search"><span class="labelText">Enter food:</span>
+					<input type="text" placeholder="Tacos" name="search" id="search">
+					<span id="errorFood"></span>
 				</label>
-				<label for="city"> Enter city:
+				<label for="city"><span class="labelText">Enter city:</span>
 					<input type="text" placeholder="Omaha, NE" name="search" id="city">
+					<span id="errorCity"></span>
 				</label>
 				</br>
 				<button type="submit">Food Please!</button>
@@ -31,22 +33,22 @@
 		
 		<section class="row">
 			<section class="column">
-				<header>
-					<h2>YouTube</h2>
+				<header class="youtubeHeader">
+					
 				</header>
 				<p id="youtubeResults"></p>
 			</section>
 			
 			<section class="column column2">
-				<header>
-					<h2>Recipes</h2>
+				<header class="recipesHeader">
+					
 				</header>
 				<p id="recipeResults"></p>
 			</section>
 			
 			<section class="column">
-				<header>
-					<h2>Restaurants</h2>
+				<header class="restaurantsHeader">
+					
 				</header>
 				<p id="restaurantResults"></p>
 			</section>
@@ -56,5 +58,6 @@
 	</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="index.js"></script>
+
 </body>
 </html>

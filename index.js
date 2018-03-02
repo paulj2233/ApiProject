@@ -5,8 +5,8 @@ const youtubeKey = "AIzaSyBHHsToR8X9dSakTDaiVb25IjX7_XD01OM";
 const FOOD_URL = "https://api.edamam.com/search";
 const foodId = "54ddc21a";
 const foodKey = "2ca1c511ec9055ec7195fb39602b989a";
-const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/search";
-// const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/explore";
+// const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/search";
+const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/explore";
 
 
 function restaurantRequest (searchTerm, city, callback) {
@@ -24,29 +24,41 @@ function restaurantRequest (searchTerm, city, callback) {
 
 function callbackRestaurant (data) {
 	console.log(data);
-	const display = data.response.venues.map((item, index) => renderRestaurants(item));
+	// const display = data.response.venues.map((item, index) => renderRestaurants(item));
+	const display = data.response.groups["0"].items.map((item, index) => renderRestaurants(item));
 	$("#restaurantResults").html(display);
 }
 
 function renderRestaurants (item) {
-	// console.log(item.stats.tipCount);
-	const restaurantName = item.name;
-	const restaurantNumber = item.contact.formattedPhone;
-	const restaurantAddress = item.location.address;
-	const restaurantUrl = item.url;
-	console.log(restaurantNumber);
-	console.log(restaurantAddress);
+	const restaurantName = item.venue.name;
+	const restaurantNumber = item.venue.contact.formattedPhone;
+	const restaurantAddress = item.venue.location.address;
+	const restaurantUrl = item.venue.url;
+	const restaurantRating = item.venue.rating;
+	// const restaurantLikes = item.tips["0"].likes.count;
+	const restaurantMessage = item.tips["0"].text;
+	// console.log(restaurantLikes);
+	console.log(restaurantMessage);
+	console.log(restaurantRating);
+
+	// const restaurantName = item.name;
+	// const restaurantNumber = item.contact.formattedPhone;
+	// const restaurantAddress = item.location.address;
+	// const restaurantUrl = item.url;
+	
 	// if (restaurantNumber !== undefined && restaurantAddress !== undefined && restaurantUrl !== undefined) {
 		return `<div class="hover">
-					<h3>${restaurantName}</h3>
+					<h3><a href='${restaurantUrl}' class='links'>${restaurantName}</a></h3>
 					<ul>
 						<li>Phone: ${restaurantNumber || ""}</li>
 						<li>Address: ${restaurantAddress || ""}</li>
-						<li>Website: ${restaurantUrl || ""}</li>
-						<br/>
-						<br/>
-						<br/>
+						<li>Rating: ${restaurantRating || ""}</li>
+						<li>${restaurantMessage || ""}</li>
+						
 					</ul>
+					</br>
+					</br>
+					</br>
 				</div>`
 	// }
 }
@@ -84,7 +96,7 @@ function renderRecipes (item) {
 	const originalRecipe = item.recipe.url;
 
 	return `<div class="hover">
-				<a href="${originalRecipe}"><h3>${label}</h3></a>
+				<a href="${originalRecipe}" class="links"><h3>${label}</h3></a>
 				<ul>
 					<li>${ingredients[0]}</li>
 					<li>${ingredients[1] || ""}</li>
@@ -128,7 +140,7 @@ function render (item) {
 	let title = item.snippet.title;
 	let image = item.snippet.thumbnails.medium.url;
 	return `<div class="youTubeContainer hover">
-				<h3><a href= ${href} class="youTubeLinks">${title}</a></h3>
+				<h3><a href= ${href} class="links">${title}</a></h3>
 				<img src=${image} alt=${title}>
 				<br/>
 				<br/>
@@ -138,18 +150,32 @@ function render (item) {
 
 function submitHandler() {
 	$('form').on('submit', function (event){
-		console.log('submit works');
 		event.preventDefault();
 		let searchTerm = $('#search').val();
 		let city = $("#city").val();
-		console.log(city);
-		$("#city").val("");
-		console.log(searchTerm);
-		$('#search').val("");
-		youtubeRequest(searchTerm, callbackTube);
-		recipeRequest(searchTerm, callbackFood);
-		restaurantRequest(searchTerm, city, callbackRestaurant);
+	
+		if(searchTerm === "" && city === ""){
+			$("#errorFood").html("Oops, enter a food, turkey!");
+			$("#errorCity").html("Oops, enter a city please");
+		} else if (city === "") {
+			$("#errorCity").html("Oops, enter a city");
+		} else if (searchTerm === "") {
+			$("#errorFood").html("Oops, enter a food turkey");
+		} else {
+			$("#errorCity").html("");
+			$("#errorFood").html("");
+			$("#city").val("");
+			$('#search').val("");
+			$(".recipesHeader").html("<h2>Recipes</h2>");
+			$(".restaurantsHeader").html("<h2>Restaurants</h2>");
+			$(".youtubeHeader").html("<h2>YouTube</h2>");
+			youtubeRequest(searchTerm, callbackTube);
+			recipeRequest(searchTerm, callbackFood);
+			restaurantRequest(searchTerm, city, callbackRestaurant);
+		}
 	});
 }
+
+
 
 $(submitHandler);

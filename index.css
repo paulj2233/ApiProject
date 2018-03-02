@@ -4,14 +4,11 @@
 
 body {
   margin: 0;
-  /*background-color: rgba(217, 41, 39, .1);*/
+  
  /* background-color: rgba(230, 225, 98, .1);*/
   font-family: 'PT Sans', sans-serif;
- background-color: rgba(230, 225, 98, .3);
-background-image: radial-gradient(rgba(230, 225, 98, .3) 15%, transparent 16%),
-radial-gradient(rgba(230, 225, 98, .3) 15%, transparent 16%);
-background-size:60px 60px;
-background-position: 0 0, 30px 30px;
+background-image: linear-gradient(to right, #accbee 0%, #e7f0fd 100%);
+/*background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);*/
 }
 
 
@@ -24,7 +21,7 @@ a {
 	text-decoration: none;
 }
 
-.youTubeLinks {
+.links {
 	text-align: center;
 	/*color: rgba(0, 141, 43, .9);*/
 	/*color: rgba(18, 124, 166, .9);*/
@@ -32,7 +29,7 @@ a {
 	/*color: black;*/
 }
 
-.youTubeLinks:hover {
+.links:hover {
 	color: rgba(159, 105, 240, .9);
 }
 
@@ -84,17 +81,17 @@ h2 {
 
 h3 {
 	text-align: center;
-	/*color: black;*/
 	font-weight: 900;
 	font-size: 1.3em;
-	color: rgba(159, 105, 240, .5);
+	color: rgba(159, 105, 240, .7);
 	/*color: rgba(0, 141, 43, .9);*/
 	/*color: rgba(18, 124, 166, .9);*/
 	font-family: 'Raleway', sans-serif;
+	text-decoration: underline;
 }
 
 h3:hover {
-	color: rgba(159, 105, 240, .9);
+	color: rgba(159, 105, 240, 1.0);
 }
 
 h4 {
@@ -170,16 +167,19 @@ input {
 	height: 4vh;
 	font-size: 1em;
 	border: .5px solid rgba(159, 105, 240, .3);
+	border-radius: 4px;
 }
 
 .labelText {
 	color: black;
 	font-size: 1.0em;
 	font-family: 'Raleway', sans-serif;
+
 }
 
 ::placeholder {
 	color: lightgrey;
+
 }
 
 .moodInTitle {
@@ -188,6 +188,10 @@ input {
 
 img {
 	width: 100%;
+}
+
+#errorCity, #errorFood {
+	color: red;
 }
 
 @media only screen and (max-width: 720px) {
