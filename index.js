@@ -18,13 +18,12 @@ function restaurantRequest (searchTerm, city, callback) {
 		client_id: 'BXSADC2FPKWG01XQQYRXCAID0RL15OBBZUBMD0BSR1GYSD5W',
     	client_secret: 'WTO43W120JFMWPCCILGAGMMIMETRDKULGJ5ZCLADRLFQHO2X'
 	}
-	console.log(RESTAURANT_URL)
+	
 	$.getJSON(RESTAURANT_URL, query, callback);
 }
 
 function callbackRestaurant (data) {
 	console.log(data);
-	// const display = data.response.venues.map((item, index) => renderRestaurants(item));
 	const display = data.response.groups["0"].items.map((item, index) => renderRestaurants(item));
 	$("#restaurantResults").html(display);
 }
@@ -38,13 +37,9 @@ function renderRestaurants (item) {
 	// const restaurantLikes = item.tips["0"].likes.count;
 	const restaurantMessage = item.tips["0"].text;
 	// console.log(restaurantLikes);
-	console.log(restaurantMessage);
-	console.log(restaurantRating);
+	
 
-	// const restaurantName = item.name;
-	// const restaurantNumber = item.contact.formattedPhone;
-	// const restaurantAddress = item.location.address;
-	// const restaurantUrl = item.url;
+	
 	
 	// if (restaurantNumber !== undefined && restaurantAddress !== undefined && restaurantUrl !== undefined) {
 		return `<div class="hover">
@@ -53,7 +48,7 @@ function renderRestaurants (item) {
 						<li>Phone: ${restaurantNumber || ""}</li>
 						<li>Address: ${restaurantAddress || ""}</li>
 						<li>Rating: ${restaurantRating || ""}</li>
-						<li>${restaurantMessage || ""}</li>
+						<li>Customer feedback: "${restaurantMessage || ""}"</li>
 						
 					</ul>
 					</br>
@@ -72,24 +67,20 @@ function recipeRequest (searchTerm, callback) {
 		q: `${searchTerm}`,
 		app_id: `${foodId}`,
 		app_key: `${foodKey}`,
-		to: 5,
+		to: 6,
 		ingr: 5
 	}
-	console.log(FOOD_URL);
+	
 	$.getJSON(FOOD_URL, query, callback)
 }
 
 function callbackFood (data) {
 	console.log(data);
 	const display = data.hits.map((item, index) => renderRecipes(item));	
-	console.log(display);
 	$("#recipeResults").html(display);
 };
 
 function renderRecipes (item) {
-	console.log(item.recipe.yield);
-	console.log(item.recipe.image);
-	console.log(item.recipe.calories);
 	// const pic = 'https://www.edamam.com/web-img/e67/e670c8de536f4beceedc0f4707efec50.jpg';
 	const label = item.recipe.label;
 	const ingredients = item.recipe.ingredientLines;
@@ -117,7 +108,6 @@ function youtubeRequest (searchTerm, callback) {
 		key: `${youtubeKey}`,
 		q: `The best recipe for ${searchTerm} in: name`
 	}
-	 console.log(YOUTUBE_URL);
 	$.getJSON(YOUTUBE_URL, query, callback)
 }
 
@@ -126,16 +116,12 @@ function youtubeRequest (searchTerm, callback) {
 function callbackTube (data) {
 	console.log(data);
 	const display = data.items.map((item, index) => render(item));	
-	console.log(display);
 	$("#youtubeResults").html(display);
 
 }
 
 
 function render (item) {
-	console.log(item.id.videoId);
-	console.log(item.snippet.title);
-	console.log(item.snippet.thumbnails.medium.url);
 	let href = "https://www.youtube.com/watch?v=" + item.id.videoId;
 	let title = item.snippet.title;
 	let image = item.snippet.thumbnails.medium.url;

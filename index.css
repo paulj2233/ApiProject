@@ -3,12 +3,10 @@
 }
 
 body {
-  margin: 0;
-  
- /* background-color: rgba(230, 225, 98, .1);*/
-  font-family: 'PT Sans', sans-serif;
-background-image: linear-gradient(to right, #accbee 0%, #e7f0fd 100%);
-/*background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);*/
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+	background-image: linear-gradient(to right, #accbee 0%, #e7f0fd 100%);
+	/*background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%);*/
 }
 
 
@@ -23,14 +21,12 @@ a {
 
 .links {
 	text-align: center;
-	/*color: rgba(0, 141, 43, .9);*/
-	/*color: rgba(18, 124, 166, .9);*/
-	color: rgba(159, 105, 240, .5);
+	color: rgba(159, 105, 240, .7);
 	/*color: black;*/
 }
 
 .links:hover {
-	color: rgba(159, 105, 240, .9);
+	color: rgba(159, 105, 240, 1.0);
 }
 
 .youTubeContainer {
@@ -73,7 +69,6 @@ h1 {
 
 h2 {
 	text-align: center;
-	/*color: rgba(217, 41, 39, .7);*/
 	color: rgba(240, 159, 32, .9);
 	font-size: 2em;
 	font-family: 'Raleway', sans-serif;
@@ -84,8 +79,6 @@ h3 {
 	font-weight: 900;
 	font-size: 1.3em;
 	color: rgba(159, 105, 240, .7);
-	/*color: rgba(0, 141, 43, .9);*/
-	/*color: rgba(18, 124, 166, .9);*/
 	font-family: 'Raleway', sans-serif;
 	text-decoration: underline;
 }
@@ -96,11 +89,10 @@ h3:hover {
 
 h4 {
 	color: black;
-	/*color: rgba(159, 105, 240, .9);*/
-	/*color: rgba(240, 159, 32, .5);*/
-	/*color: red;*/
 	font-size: 1.5em;
 	font-family: 'Raleway', sans-serif;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 #restaurantResults {
@@ -135,8 +127,6 @@ button:active {
 }
 
 .hover:hover {
-	/*background-color: rgba(230, 225, 98, .3);*/
-	/*background-color: rgba(240, 159, 32, .3);*/
 	background-color: white;
 	box-shadow: 0 2px 0 rgba(159, 105, 240, .9);
 	transform:translate(0px,-10px);
@@ -146,6 +136,8 @@ button:active {
 
 .inputGroup {
 	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 10%;
 }
 
@@ -155,7 +147,7 @@ button:active {
 
 label {
 	display: block;
-	width: 15%;
+	width: 25%;
 	text-align: left;
 	margin-left: auto;
 	margin-right: auto;
@@ -164,16 +156,21 @@ label {
 
 input {
 	width: 100%;
-	height: 4vh;
+	height: 6vh;
 	font-size: 1em;
 	border: .5px solid rgba(159, 105, 240, .3);
 	border-radius: 4px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .labelText {
 	color: black;
 	font-size: 1.0em;
 	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 
 }
 
@@ -211,4 +208,35 @@ img {
 		margin-right: auto;
 	}
 
+	::placeholder {
+		visibility: hidden;
 	}
+
+	label {
+		text-align: center;
+		width: 35%;
+	}
+
+}
+
+@media only screen and (max-width: 550px) {
+
+	.labelText {
+		font-size: 1.0em;
+		margin-left: auto;
+		margin-right: auto;
+		width: 150%;
+	}
+
+	input {
+		width: 100%;
+		height: 6vh;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	label {
+		text-align: center;
+		width: 45%;
+	}
+}
