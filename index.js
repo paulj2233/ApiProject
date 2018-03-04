@@ -5,10 +5,9 @@ const youtubeKey = "AIzaSyBHHsToR8X9dSakTDaiVb25IjX7_XD01OM";
 const FOOD_URL = "https://api.edamam.com/search";
 const foodId = "54ddc21a";
 const foodKey = "2ca1c511ec9055ec7195fb39602b989a";
-// const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/search";
 const RESTAURANT_URL = "https://api.foursquare.com/v2/venues/explore";
 
-
+//request to foursquare API
 function restaurantRequest (searchTerm, city, callback) {
 	const query = {
 		near: `${city}`,
@@ -22,27 +21,23 @@ function restaurantRequest (searchTerm, city, callback) {
 	$.getJSON(RESTAURANT_URL, query, callback);
 }
 
+//what to do with the foursquare data that's sent back
 function callbackRestaurant (data) {
 	console.log(data);
 	const display = data.response.groups["0"].items.map((item, index) => renderRestaurants(item));
 	$("#restaurantResults").html(display);
 }
 
+//how to show the data from foursquare on the page
 function renderRestaurants (item) {
 	const restaurantName = item.venue.name;
 	const restaurantNumber = item.venue.contact.formattedPhone;
 	const restaurantAddress = item.venue.location.address;
 	const restaurantUrl = item.venue.url;
 	const restaurantRating = item.venue.rating;
-	// const restaurantLikes = item.tips["0"].likes.count;
 	const restaurantMessage = item.tips["0"].text;
-	// console.log(restaurantLikes);
-	
 
-	
-	
-	// if (restaurantNumber !== undefined && restaurantAddress !== undefined && restaurantUrl !== undefined) {
-		return `<div class="hover">
+	return `<div class="hover">
 					<h3><a href='${restaurantUrl}' class='links'>${restaurantName}</a></h3>
 					<ul>
 						<li>Phone: ${restaurantNumber || ""}</li>
@@ -55,13 +50,13 @@ function renderRestaurants (item) {
 					</br>
 					</br>
 				</div>`
-	// }
+	
 }
 
 
 
 
-
+//request to Edamam API
 function recipeRequest (searchTerm, callback) {
 	const query = {
 		q: `${searchTerm}`,
@@ -74,14 +69,15 @@ function recipeRequest (searchTerm, callback) {
 	$.getJSON(FOOD_URL, query, callback)
 }
 
+//what to do with the Edamam data that's sent back
 function callbackFood (data) {
 	console.log(data);
 	const display = data.hits.map((item, index) => renderRecipes(item));	
 	$("#recipeResults").html(display);
 };
 
+//how to show Edamam data on the page.
 function renderRecipes (item) {
-	// const pic = 'https://www.edamam.com/web-img/e67/e670c8de536f4beceedc0f4707efec50.jpg';
 	const label = item.recipe.label;
 	const ingredients = item.recipe.ingredientLines;
 	const originalRecipe = item.recipe.url;
@@ -102,6 +98,7 @@ function renderRecipes (item) {
 			</div>`
 }
 
+//request to YouTube API
 function youtubeRequest (searchTerm, callback) {
 	const query = {
 		part: 'snippet',
@@ -112,7 +109,7 @@ function youtubeRequest (searchTerm, callback) {
 }
 
 
-
+//what to do with the data that is sent back from the YouTube request
 function callbackTube (data) {
 	console.log(data);
 	const display = data.items.map((item, index) => render(item));	
@@ -120,7 +117,7 @@ function callbackTube (data) {
 
 }
 
-
+//how to show the data on the page
 function render (item) {
 	let href = "https://www.youtube.com/watch?v=" + item.id.videoId;
 	let title = item.snippet.title;
@@ -134,6 +131,7 @@ function render (item) {
 			</div>`;
 }
 
+//making sure the user enters a valid search entry, and calling the three API's and showing the data on the page
 function submitHandler() {
 	$('form').on('submit', function (event){
 		event.preventDefault();
